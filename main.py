@@ -36,5 +36,15 @@ class Card:
         self.valid = False 
         return None 
  
-    def generator(self, this_bank=True):
-        pass
+    def generator(self, this_bank=True): 
+        if this_bank and self.bank and type(this_bank) == bool: 
+            id = str(self.n)[:6] 
+        elif (type(this_bank) in [int, str]) and (str(this_bank) in self.ids): 
+            id = str(this_bank) 
+        elif not this_bank and type(this_bank) == bool: 
+            id = choice(list(self.ids.keys())) 
+        else: 
+            keys = '\n'.join([str(i) for i in self.ids]) 
+            raise ArgumentError(f'this_bank can be:\n1: True for id of current card if it\'s valid.\n' 
+                                '2: False for a random choose of valid ids.\n' 
+                                '3: the id that you prefer.\n\nvalid ids:\n{keys}')
