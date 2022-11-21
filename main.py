@@ -10,4 +10,7 @@ class Card:
             raise ArgumentError('Number should be an inetger with 16 digits.') 
         self.n = number 
         self.valid = self.check() 
-        self.bank = self.id_bank()
+        self.bank = self.id_bank() 
+ 
+    def check(self) -> bool:
+        pass
