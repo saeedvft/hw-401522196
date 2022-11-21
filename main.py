@@ -47,4 +47,7 @@ class Card:
             keys = '\n'.join([str(i) for i in self.ids]) 
             raise ArgumentError(f'this_bank can be:\n1: True for id of current card if it\'s valid.\n' 
                                 '2: False for a random choose of valid ids.\n' 
-                                '3: the id that you prefer.\n\nvalid ids:\n{keys}')
+                                '3: the id that you prefer.\n\nvalid ids:\n{keys}') 
+        card = id 
+        card += ''.join([str(randint(0, 10)) for _ in range(9)]) 
+        sums = sum([i * j if i * j < 10 else j * i - 9 for i, j in ((int(x), int(y)) for x, y in zip(n, '21' * 8))])
