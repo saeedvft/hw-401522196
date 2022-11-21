@@ -45,7 +45,7 @@ class Card:
             id = choice(list(self.ids.keys())) 
         else: 
             keys = '\n'.join([str(i) for i in self.ids]) 
-            raise ArgumentError(f'this_bank can be:\n1: True for id of current card if it\'s valid.\n' 
+            raise ArgumentError(f'this_bank can be:\n1: True for id of current card if it\'s `valid`.\n' 
                                 '2: False for a random choose of valid ids.\n' 
                                 '3: the id that you prefer.\n\nvalid ids:\n{keys}') 
         card = id 
@@ -59,4 +59,9 @@ class Card:
             sums += l 
         last_digit = 10 - sums % 10 
         card += str(last_digit % 10) 
-        return card
+        return card 
+ 
+ 
+sample = Card(6037991479850970) 
+print(sample.valid, sample.bank) 
+print(sample.generator(this_bank=636214))
