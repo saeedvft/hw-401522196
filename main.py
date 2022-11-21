@@ -50,4 +50,13 @@ class Card:
                                 '3: the id that you prefer.\n\nvalid ids:\n{keys}') 
         card = id 
         card += ''.join([str(randint(0, 10)) for _ in range(9)]) 
-        sums = sum([i * j if i * j < 10 else j * i - 9 for i, j in ((int(x), int(y)) for x, y in zip(n, '21' * 8))])
+        # sums = sum([i * j if i * j < 10 else j * i - 9 for i, j in ((int(x), int(y)) for x, y in zip(n, '21' * 8))]) 
+        sums = 0 
+        for i, j in zip(card, '21'*8): 
+            l = int(i) * int(j) 
+            if (l) > 9: 
+                l -= 9 
+            sums += l 
+        last_digit = 10 - sums % 10 
+        card += str(last_digit % 10) 
+        return card
