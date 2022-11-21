@@ -34,4 +34,7 @@ class Card:
         if bank: 
             return bank 
         self.valid = False 
-        return None
+        return None 
+ 
+    def generator(self, this_bank=True):
+        pass
