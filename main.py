@@ -23,5 +23,15 @@ class Card:
             sums += l 
         return not sums % 10 
  
-    def id_bank(self):
-        pass
+    def id_bank(self): 
+        id = str(self.n)[:6] 
+        self.ids = {} 
+        soup = BeautifulSoup(get('https://www.elmefarda.com/پیش-شماره-کارت-بانکی/').text, 'html.parser') 
+        box = soup.select('table tr td') 
+        for i, j in zip(box[1::2], box[::2]): 
+            self.ids[i.text] = j.text 
+        bank = self.ids.get(id, None) 
+        if bank: 
+            return bank 
+        self.valid = False 
+        return None
