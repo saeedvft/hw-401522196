@@ -1,4 +1,4 @@
-# mainpy
+# main.py
 
 a python code to check the algorithm of an iranian card number and generating new random card number.
 
